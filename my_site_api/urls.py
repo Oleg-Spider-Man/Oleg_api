@@ -17,14 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from HitTrainers.views import TrainersViewSet
-
-router = routers.SimpleRouter()
-router.register(r'trainer', TrainersViewSet)
+from HitTrainers.views import TrainersAPIView, TrainersAPIUpdate, TrainersAPIDestroy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include(router.urls)),
-    # path('api/v1/trainerslist/', TrainersAPIView.as_view()),
-    # path('api/v1/trainerslist/<int:pk>/', TrainersAPIDetailView.as_view())
+    path('api/v1/trainers/', TrainersAPIView.as_view()),
+    path('api/v1/trainers/<int:pk>/', TrainersAPIUpdate.as_view()),
+    path('api/v1/trainersdelete/<int:pk>/', TrainersAPIDestroy.as_view()),
 ]
