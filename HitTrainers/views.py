@@ -23,5 +23,5 @@ class TrainersAPIUpdate(generics.RetrieveUpdateAPIView):
     serializer_class = TrainersSerializer
     # изменять только свою запись пользователю, а читать всем
     permission_classes = (IsAuthenticated,)
-    authentication_classes = (TokenAuthentication,)
+    # authentication_classes = (TokenAuthentication,)
 
