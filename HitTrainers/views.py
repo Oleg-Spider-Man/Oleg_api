@@ -3,6 +3,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
 
 from .models import Trainers
+from .pagination import TrainersAPIViewPagination
 from .permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import TrainersSerializer
 
@@ -11,6 +12,7 @@ class TrainersAPIView(generics.ListCreateAPIView):
      queryset = Trainers.objects.all()
      serializer_class = TrainersSerializer
      permission_classes = (IsAuthenticatedOrReadOnly,)
+     pagination_class = TrainersAPIViewPagination
 
 class TrainersAPIDestroy(generics.RetrieveDestroyAPIView):
      queryset = Trainers.objects.all()
